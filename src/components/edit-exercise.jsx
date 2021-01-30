@@ -3,6 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { useParams } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 const EditExercise = () => {
     const[username,setUserName] = useState('');
@@ -10,6 +11,7 @@ const EditExercise = () => {
     const[duration,setDuration] = useState(0);
     const[date,setDate] = useState(new Date());
     const {id} = useParams();
+    let history = useHistory();
 
     useEffect(() => {
         axios.get('https://murmuring-harbor-37589.herokuapp.com/exercises/'+id)
@@ -34,7 +36,7 @@ const EditExercise = () => {
         setDate(date)
     }
 
-    const onSubmit = (e) => {
+    const OnSubmit = (e) => {
         e.preventDefault();
         const exercise = {
             username: username,
@@ -45,13 +47,14 @@ const EditExercise = () => {
         console.log(exercise);
         axios.post('https://murmuring-harbor-37589.herokuapp.com/update/'+id,exercise)
             .then(res => console.log(res.data))
+        history.push('/')
     }
 
 
     return(
         <div>
             <h3>Edit Exercise Log</h3>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={OnSubmit}>
                 <div className="form-group"> 
                     <label>Username: </label>
                     <select required className="form-control" value={username} onChange={onChangeUserName}>

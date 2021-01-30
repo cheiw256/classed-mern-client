@@ -3,6 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import 'react-bootstrap';
+import { useHistory } from "react-router-dom";
 
 
 const CreateExercise = () => {
@@ -11,6 +12,7 @@ const CreateExercise = () => {
     const[duration,setDuration] = useState(0);
     const[date,setDate] = useState(new Date());
     const[users,setUsers] = useState([]);
+    let history = useHistory();
 
     useEffect(() => {
         console.log('mounted');
@@ -36,7 +38,7 @@ const CreateExercise = () => {
         setDate(date)
     }
 
-    const onSubmit = (e) => {
+    const OnSubmit = (e) => {
         e.preventDefault();
         const exercise = {
             username: username,
@@ -47,13 +49,14 @@ const CreateExercise = () => {
         console.log(exercise);
         axios.post('https://murmuring-harbor-37589.herokuapp.com/exercises/add',exercise)
             .then(res => console.log(res.data))
+        history.push('/')
 
     }
 
     return(
         <div>
             <h3>Create New Exercise Log</h3>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={OnSubmit}>
                 <div className="form-group"> 
                     <label>Username: </label>
                     <select required className="form-control" value={username} onChange={onChangeUserName}>
