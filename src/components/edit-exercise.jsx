@@ -45,7 +45,6 @@ const EditExercise = () => {
         console.log(exercise);
         axios.post('https://murmuring-harbor-37589.herokuapp.com/update/'+id,exercise)
             .then(res => console.log(res.data))
-        window.location = '/';
     }
 
 

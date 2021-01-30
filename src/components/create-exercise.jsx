@@ -47,7 +47,6 @@ const CreateExercise = () => {
         console.log(exercise);
         axios.post('https://murmuring-harbor-37589.herokuapp.com/exercises/add',exercise)
             .then(res => console.log(res.data))
-        window.location = '/'
 
     }
 

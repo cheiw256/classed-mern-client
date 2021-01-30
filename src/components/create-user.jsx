@@ -18,7 +18,6 @@ const CreateUser = () => {
         axios.post('https://murmuring-harbor-37589.herokuapp.com/users/add', user)
             .then(res => console.log(res.data))
         setUserName('')
-        window.location = '/'
     }
     return(
         <div>
