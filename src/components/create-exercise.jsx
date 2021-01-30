@@ -14,7 +14,7 @@ const CreateExercise = () => {
 
     useEffect(() => {
         console.log('mounted');
-        axios.get('http://localhost:5000/users/')
+        axios.get('https://murmuring-harbor-37589.herokuapp.com/users/')
             .then(response => {
                 if(response.data.length > 0){
                     setUsers(response.data.map(user => user.username))
@@ -45,7 +45,7 @@ const CreateExercise = () => {
             date: date
         }
         console.log(exercise);
-        axios.post('http://localhost:5000/exercises/add',exercise)
+        axios.post('https://murmuring-harbor-37589.herokuapp.com/exercises/add',exercise)
             .then(res => console.log(res.data))
         window.location = '/'
 

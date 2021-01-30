@@ -12,7 +12,7 @@ const EditExercise = () => {
     const {id} = useParams();
 
     useEffect(() => {
-        axios.get('http://localhost:5000/exercises/'+id)
+        axios.get('https://murmuring-harbor-37589.herokuapp.com/exercises/'+id)
             .then(response => {
                 setUserName(response.data.username);
                 setDescription(response.data.description)
@@ -43,7 +43,7 @@ const EditExercise = () => {
             date: date
         }
         console.log(exercise);
-        axios.post('http://localhost:5000/exercises/update/'+id,exercise)
+        axios.post('https://murmuring-harbor-37589.herokuapp.com/update/'+id,exercise)
             .then(res => console.log(res.data))
         window.location = '/';
     }

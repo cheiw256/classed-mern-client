@@ -8,13 +8,13 @@ const ExerciseList = () => {
     const [exerciseArray, setExercise] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/exercises/')
+        axios.get('https://murmuring-harbor-37589.herokuapp.com/exercises/')
             .then(response => setExercise(response.data))
             .catch(err => console.log(err))}
             ,[])
 
     const deleteExercise = (id) => {
-        axios.delete('http://localhost:5000/exercises/'+id)
+        axios.delete('https://murmuring-harbor-37589.herokuapp.com/exercises/'+id)
             .then(response => { console.log(response.data)});
         setExercise(exerciseArray.filter(el => el._id !== id))
     }
